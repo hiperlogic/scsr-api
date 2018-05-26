@@ -38,19 +38,16 @@ class ScsrAPP:
         # import blueprints
         from home.views import home_app
         from scsr.views import ScsrView
-        from startupBattle.views import StartupBattleView
         from user.views import user_app
         from sys_app.views import app_app
 
         scsrView=ScsrView()
         scsrView.registerBlueprints(self.APP)
 
-        startupBattle = StartupBattleView(self.APP)
 
         # register blueprints
         self.APP.register_blueprint(home_app)
         #self.APP.register_blueprint(scsr_app)
         self.APP.register_blueprint(app_app)
-        #self.APP.register_blueprint(battles_app)
         self.APP.register_blueprint(user_app)
         CORS(self.APP)
