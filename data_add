@@ -1,0 +1,65 @@
+the_user=UserDB()
+the_user.name="Rodrigo"
+the_user.surname="Domingues"
+the_user.username="lordspy"
+the_user.password="senhasecreta"
+the_user.city="Uberlândia"
+the_user.state="Minas Gerais"
+the_user.country="Brasil"
+the_user.bio="The Fucking Creator!"
+the_user.email="lordspy@gmail.com"
+the_user.lang="pt"
+the_user.save()
+
+zerruela=UserDB()
+zerruela.name="José"
+zerruela.surname="Ruela"
+zerruela.username="zerruela"
+zerruela.password="senhasecreta"
+zerruela.city="São Paulo"
+zerruela.state="São Paulo"
+zerruela.country="Brasil"
+zerruela.bio="Um Zé Ruela!"
+zerruela.email="zerruela@gmail.com"
+zerruela.lang="pt"
+zerruela.save()
+
+opg=GameDB()
+opg.name={"pt":"O Primeiro Guerreiro", "en":"The First Knight"}
+opg.studio="AEEE Studios"
+opg.publisher=None
+opg.year=datetime(year=2018, month=1, day=1)
+opg.save()
+
+si=GameDB()
+si.name={"pt":"Space Invaders", "en":"Space Invaders"}
+si.studio="Taito"
+si.publisher="Taito"
+si.year=datetime(year=1978, month=6, day=1)
+si.save()
+
+
+acao=GenreDB()
+acao.genre={"pt":"ação", "en":"action"}
+acao.save()
+
+aventura=GenreDB()
+aventura.genre={"pt":"aventura", "en":"adventure"}
+aventura.save()
+
+simulacao=GenreDB()
+simulacao.genre={"pt":"simulação", "en":"simulation"}
+simulacao.save()
+
+estrategia=GenreDB()
+estrategia.genre={"pt":"estratégia", "en":"strategy"}
+estrategia.save()
+
+rpg=GenreDB()
+rpg.genre={"pt":"rpg", "en":"rpg"}
+rpg.save()
+
+puzzle=GenreDB()
+puzzle.genre={"pt":"enigma", "en":"puzzle"}
+puzzle.save()
+

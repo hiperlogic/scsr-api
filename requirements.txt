@@ -1,0 +1,16 @@
+Flask
+Flask-Script
+pymongo
+mongoengine
+flask-mongoengine
+py-bcrypt
+jsonschema
+python-dotenv
+python-jose-cryptodome
+flask-cors
+six
+ipython
+blinker
+celery
+connexion
+

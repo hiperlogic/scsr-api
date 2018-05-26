@@ -1,0 +1,459 @@
+from datetime import datetime
+from application import db
+from user.models.user import UserDB
+from game.models.genre import GenreDB
+from game.models.game import GameDB
+from game.models.user_game_genre import UserGameGenre
+
+spy=UserDB.objects().first()
+opg=GameDB.objects().first()
+genres=GenreDB.objects()
+
+opgspy=UserGameGenre()
+opgspy.user=spy
+opgspy.game=opg
+
+opgspy.addGenre("ação")
+
+
+
+
+from scsr.models.elements import ElementDB,ElementAO,ElementGameMappingAO,ElementGameMappingDB,ElementReferenceAO,ElementReferenceDB
+from scsr.models.behaviors import BehaviorAO, BehaviorDB
+from scsr.models.persuasive_function import PersuasiveFunctionDB, PersuasiveFunctionAO
+from scsr.models.aesthetic_function import AestheticFunctionDB, AestheticFunctionAO
+from scsr.models.orchestration_function import OrchestrationFunctionDB, OrchestrationFunctionAO
+from scsr.models.reification_function import ReificationFunctionDB, ReificationFunctionAO
+
+elDB=ElementDB.objects
+
+elAO = [el.to_obj() for el in elDB]
+
+i=0
+
+for el in elAO:
+     print(f"[{i} - "+el.element["pt"])
+     i+=1
+
+
+
+
+inter=[1,2,3,4]
+
+ludi=[5,6,7]
+
+gamef=[8,9,10,11,12]
+
+mech=[91,92,93,94]
+
+devi = [101,102,103]
+
+inter1=[1,3,41,42,43]
+
+ludi1=[51,52,6,2]
+
+gamef1=[61,62,63,64,65,11,4,7]
+
+mech1 = [90,81,92,93,84]
+
+devi1 = [201,202,101,104]
+
+pf=PersuasiveFunctionAO.create_function()
+
+
+pf2=PersuasiveFunctionAO.create_function()
+
+
+af=AestheticFunctionAO.create_function()
+
+af2=AestheticFunctionAO.create_function()
+
+of=OrchestrationFunctionAO.create_function()
+
+of2=OrchestrationFunctionAO.create_function()
+
+rf=ReificationFunctionAO.create_function()
+
+rf2=ReificationFunctionAO.create_function()
+
+
+for elt in inter:
+     pf.add_interactivity_element(elAO[elt])
+     af.add_interactivity_element(elAO[elt])
+     of.add_interactivity_element(elAO[elt])
+     rf.add_interactivity_element(elAO[elt])
+
+for elt in ludi:
+     pf.add_ludic_element(elAO[elt])
+     af.add_ludic_element(elAO[elt])
+
+for elt in gamef:
+     pf.add_gamefication_element(elAO[elt])
+     of.add_gamefication_element(elAO[elt])
+
+for elt in mech:
+     of.add_mechanical_element(elAO[elt])
+     rf.add_mechanical_element(elAO[elt])
+
+for elt in devi:
+     rf.add_device_element(elAO[elt])
+
+
+for elt in inter1:
+     pf2.add_interactivity_element(elAO[elt])
+     af2.add_interactivity_element(elAO[elt])
+     of2.add_interactivity_element(elAO[elt])
+     rf2.add_interactivity_element(elAO[elt])
+
+for elt in ludi1:
+     pf2.add_ludic_element(elAO[elt])
+     af2.add_ludic_element(elAO[elt])
+
+for elt in gamef1:
+     pf2.add_gamefication_element(elAO[elt])
+     of2.add_gamefication_element(elAO[elt])
+
+for elt in mech1:
+     of2.add_mechanical_element(elAO[elt])
+     rf2.add_mechanical_element(elAO[elt])
+
+for elt in devi1:
+     rf2.add_device_element(elAO[elt])
+
+
+interand=set(inter) & set(inter1)
+interor=set(inter) | set(inter1)
+interxor=set(inter) ^ set(inter1)
+interdiff=set((set(inter) ^ set(inter1)) & set(inter))
+interunion=set(inter) | set(inter1)
+interinter=set(inter) & set(inter1)
+
+ludand=set(ludi) & set(ludi1)
+ludor=set(ludi) | set(ludi1)
+ludxor=set(ludi) ^ set(ludi1)
+luddiff=set((set(ludi) ^ set(ludi1)) & set(ludi))
+ludunion=set(ludi) | set(ludi1)
+ludinter=set(ludi) & set(ludi1)
+
+gamefand=set(gamef) & set(gamef1)
+gamefor=set(gamef) | set(gamef1)
+gamefxor=set(gamef) ^ set(gamef1)
+gamefdiff=set((set(gamef) ^ set(gamef1)) & set(gamef))
+gamefunion=set(gamef) | set(gamef1)
+gamefinter=set(gamef) & set(gamef1)
+
+mechand=set(mech) & set(mech1)
+mechor=set(mech) | set(mech1)
+mechxor=set(mech) ^ set(mech1)
+mechdiff=set((set(mech) ^ set(mech1)) & set(mech))
+mechunion=set(mech) | set(mech1)
+mechinter=set(mech) & set(mech1)
+
+deviand=set(devi) & set(devi1)
+devior=set(devi) | set(devi1)
+devixor=set(devi) ^ set(devi1)
+devidiff=set((set(devi) ^ set(devi1)) & set(devi))
+deviunion=set(devi) | set(devi1)
+deviinter=set(devi) & set(devi1)
+
+print("#"*100)
+
+pf
+
+pf2
+
+pfand=pf&pf2
+
+pfor=pf|pf2
+
+pfxor=pf^pf2
+
+pfdifference=pf.difference(pf2)
+
+pfdiff=pf.diff(pf2)
+
+pfinter=pf.intersection(pf2)
+
+pfunion=pf.union(pf2)
+
+
+print("#"*100)
+
+af
+
+af2
+
+afand=af&af2
+
+afor=af|af2
+
+afxor=af^af2
+
+afdifference=af.difference(af2)
+
+afdiff=af.diff(af2)
+
+afinter=af.intersection(af2)
+
+afunion=af.union(af2)
+
+print("#"*100)
+
+of
+
+of2
+
+ofand=of&of2
+
+ofor=of|of2
+
+ofxor=of^of2
+
+ofdifference=of.difference(of2)
+
+ofdiff=of.diff(of2)
+
+ofinter=of.intersection(of2)
+
+ofunion=of.union(of2)
+
+print("#"*100)
+
+rf
+
+rf2
+
+rfand=rf&rf2
+
+rfor=rf|rf2
+
+rfxor=rf^rf2
+
+rfdifference=rf.difference(rf2)
+
+rfdiff=rf.diff(rf2)
+
+rfinter=rf.intersection(rf2)
+
+rfunion=rf.union(rf2)
+
+
+interbehand=BehaviorAO()
+interbehor=BehaviorAO()
+interbehxor=BehaviorAO()
+interbehdifference=BehaviorAO()
+interbehinter=BehaviorAO()
+interbehunion=BehaviorAO()
+
+for el in interand:
+    interbehand.add(elAO[el])
+
+for el in interor:
+    interbehor.add(elAO[el])
+
+for el in interxor:
+    interbehxor.add(elAO[el])
+
+for el in interdiff:
+    interbehdifference.add(elAO[el])
+
+for el in interinter:
+    interbehinter.add(elAO[el])
+
+for el in interunion:
+    interbehunion.add(elAO[el])
+
+ludbehand=BehaviorAO()
+ludbehor=BehaviorAO()
+ludbehxor=BehaviorAO()
+ludbehdifference=BehaviorAO()
+ludbehinter=BehaviorAO()
+ludbehunion=BehaviorAO()
+
+for el in ludand:
+    ludbehand.add(elAO[el])
+
+for el in ludor:
+    ludbehor.add(elAO[el])
+
+for el in ludxor:
+    ludbehxor.add(elAO[el])
+
+for el in luddiff:
+    ludbehdifference.add(elAO[el])
+
+for el in ludinter:
+    ludbehinter.add(elAO[el])
+
+for el in ludunion:
+    ludbehunion.add(elAO[el])
+
+
+gamefbehand=BehaviorAO()
+gamefbehor=BehaviorAO()
+gamefbehxor=BehaviorAO()
+gamefbehdifference=BehaviorAO()
+gamefbehinter=BehaviorAO()
+gamefbehunion=BehaviorAO()
+
+
+for el in gamefand:
+    gamefbehand.add(elAO[el])
+
+for el in gamefor:
+    gamefbehor.add(elAO[el])
+
+for el in gamefxor:
+    gamefbehxor.add(elAO[el])
+
+for el in gamefdiff:
+    gamefbehdifference.add(elAO[el])
+
+for el in gamefinter:
+    gamefbehinter.add(elAO[el])
+
+for el in gamefunion:
+    gamefbehunion.add(elAO[el])
+
+mechbehand=BehaviorAO()
+mechbehor=BehaviorAO()
+mechbehxor=BehaviorAO()
+mechbehdifference=BehaviorAO()
+mechbehinter=BehaviorAO()
+mechbehunion=BehaviorAO()
+
+
+for el in mechand:
+    mechbehand.add(elAO[el])
+
+for el in mechor:
+    mechbehor.add(elAO[el])
+
+for el in mechxor:
+    mechbehxor.add(elAO[el])
+
+for el in mechdiff:
+    mechbehdifference.add(elAO[el])
+
+for el in mechinter:
+    mechbehinter.add(elAO[el])
+
+for el in mechunion:
+    mechbehunion.add(elAO[el])
+
+
+devibehand=BehaviorAO()
+devibehor=BehaviorAO()
+devibehxor=BehaviorAO()
+devibehdifference=BehaviorAO()
+devibehinter=BehaviorAO()
+devibehunion=BehaviorAO()
+
+
+for el in deviand:
+    devibehand.add(elAO[el])
+
+for el in devior:
+    devibehor.add(elAO[el])
+
+for el in devixor:
+    devibehxor.add(elAO[el])
+
+for el in devidiff:
+    devibehdifference.add(elAO[el])
+
+for el in deviinter:
+    devibehinter.add(elAO[el])
+
+for el in deviunion:
+    devibehunion.add(elAO[el])
+
+
+assert pfand.interactivity == interbehand
+assert pfor.interactivity == interbehor
+assert pfxor.interactivity == interbehxor
+assert pfdifference.interactivity == interbehdifference
+assert pfinter.interactivity == interbehinter
+assert pfunion.interactivity == interbehunion
+
+
+assert pfand.ludic == ludbehand
+assert pfor.ludic == ludbehor
+assert pfxor.ludic == ludbehxor
+assert pfdifference.ludic == ludbehdifference
+assert pfinter.ludic == ludbehinter
+assert pfunion.ludic == ludbehunion
+
+
+assert pfand.gamefication == gamefbehand
+assert pfor.gamefication == gamefbehor
+assert pfxor.gamefication == gamefbehxor
+assert pfdifference.gamefication == gamefbehdifference
+assert pfinter.gamefication == gamefbehinter
+assert pfunion.gamefication == gamefbehunion
+
+
+
+assert afand.interactivity == interbehand
+assert afor.interactivity == interbehor
+assert afxor.interactivity == interbehxor
+assert afdifference.interactivity == interbehdifference
+assert afinter.interactivity == interbehinter
+assert afunion.interactivity == interbehunion
+
+
+assert afand.ludic == ludbehand
+assert afor.ludic == ludbehor
+assert afxor.ludic == ludbehxor
+assert afdifference.ludic == ludbehdifference
+assert afinter.ludic == ludbehinter
+assert afunion.ludic == ludbehunion
+
+
+assert ofand.interactivity == interbehand
+assert ofor.interactivity == interbehor
+assert ofxor.interactivity == interbehxor
+assert ofdifference.interactivity == interbehdifference
+assert ofinter.interactivity == interbehinter
+assert ofunion.interactivity == interbehunion
+
+
+assert ofand.mechanical == mechbehand
+assert ofor.mechanical == mechbehor
+assert ofxor.mechanical == mechbehxor
+assert ofdifference.mechanical == mechbehdifference
+assert ofinter.mechanical == mechbehinter
+assert ofunion.mechanical == mechbehunion
+
+
+assert ofand.gamefication == gamefbehand
+assert ofor.gamefication == gamefbehor
+assert ofxor.gamefication == gamefbehxor
+assert ofdifference.gamefication == gamefbehdifference
+assert ofinter.gamefication == gamefbehinter
+assert ofunion.gamefication == gamefbehunion
+
+
+
+assert rfand.interactivity == interbehand
+assert rfor.interactivity == interbehor
+assert rfxor.interactivity == interbehxor
+assert rfdifference.interactivity == interbehdifference
+assert rfinter.interactivity == interbehinter
+assert rfunion.interactivity == interbehunion
+
+
+assert rfand.mechanical == mechbehand
+assert rfor.mechanical == mechbehor
+assert rfxor.mechanical == mechbehxor
+assert rfdifference.mechanical == mechbehdifference
+assert rfinter.mechanical == mechbehinter
+assert rfunion.mechanical == mechbehunion
+
+
+assert rfand.device == devibehand
+assert rfor.device == devibehor
+assert rfxor.device == devibehxor
+assert rfdifference.device == devibehdifference
+assert rfinter.device == devibehinter
+assert rfunion.device == devibehunion

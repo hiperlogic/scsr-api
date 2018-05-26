@@ -1,0 +1,38 @@
+Genre: [
+    {
+        "pt":"aventura",
+        "en":"adventure"
+    },
+    {
+        "pt":"ação",
+        "en":"action"
+    },
+    {
+        "pt":"simulação",
+        "en":"simulation"
+    },
+    {
+        "pt":"estratégia",
+        "en":"strategy"
+    },
+    {
+        "pt":"jogo de azar",
+        "en":"gambling"
+    },
+    {
+        "pt":"rpg",
+        "en":"rpg"
+    }
+]
+
+jogo: [
+    {
+        "nome":{
+            "pt":"Double Dragon",
+            "en":"Double Dragon"
+        },
+        "genre":{
+            "cod_ação":3
+        }
+    }
+]

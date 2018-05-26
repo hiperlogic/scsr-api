@@ -1,0 +1,28 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/opt/scsr-api
+    links:
+      - db:mongodb
+    container_name: scsr_api_web_1
+    depends_on:
+      - db
+      - rabbitmq
+    environment:
+      - MODE=dev
+  db:
+    image: mongo:3.0.2
+    container_name: scsr_api_db_1
+  rabbitmq:
+    image: rabbitmq:3.7-rc-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    ports:
+      - "8023:15672"
+      - "8024:5672"
+    container_name: scsr_api_mq_1
